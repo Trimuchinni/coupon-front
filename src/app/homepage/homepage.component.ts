@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-homepage',
+  templateUrl: './homepage.component.html',
+  styleUrls: ['./homepage.component.css']
 })
-export class AppComponent {
+export class HomepageComponent implements OnInit {
+
   couponId: string='';
 
   constructor(private route: ActivatedRoute) {}
@@ -18,4 +19,5 @@ export class AppComponent {
       // Use this.couponId as needed
     });
   }
+
 }

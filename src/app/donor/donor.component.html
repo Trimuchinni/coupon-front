@@ -1,0 +1,9 @@
+<!-- <p>donor works!</p> -->
+ <app-homepage></app-homepage>
+<div>
+    <input type="text" placeholder="Enter text here" [(ngModel)]="couponCode">
+    <input type="date" placeholder="Enter date here" [(ngModel)]="couponDate" (ngModelChange)="formatDate($event)">
+    <P *ngIf="buttonClicked">{{submittedTetx}}</P>
+  </div>
+  <button type="submit" (click)="postCoupon()">Submit</button>
+

@@ -1,0 +1,22 @@
+<!-- <p>reciever works!</p> -->
+ <app-homepage></app-homepage>
+<button (click)="refreshCoupons()">Refresh</button> 
+<!-- my-component.component.html -->
+    <table>
+      <tr>
+        <th>Coupon Code</th>
+        <th>Fedex ID</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let coupon of coupons">
+        <td>{{ coupon.couponCode }}</td>
+        <td>{{ coupon.fedexId }}</td>
+        <td>
+          <button class="green-button" (click)="handleButtonClick(coupon)">
+            <span class="tick-mark" *ngIf="coupon.status=='Dead'">&#10008;</span>
+            <span class="wrong-mark" *ngIf="coupon.status!='Dead'">USE ME</span>
+          </button>
+        </td>
+      </tr>
+    </table>
+  

@@ -1,0 +1,4 @@
+<p>homepage works!</p>
+<h1>Welcome {{couponId}}</h1>
+<button routerLink="/donate" [queryParams]="{ couponId: this.couponId }">Donate Coupons</button>
+<button routerLink="/receive" [queryParams]="{ couponId: this.couponId }">Receive Coupons</button>
