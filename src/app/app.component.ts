@@ -12,10 +12,10 @@ export class AppComponent {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.couponId = params['couponId'];
-      console.log('Data received:', this.couponId);
-      // Use this.couponId as needed
-    });
+    // this.route.queryParams.subscribe(params => {
+    //   this.couponId = params['couponId'];
+    //   console.log('Data received:', this.couponId);
+    //   // Use this.couponId as needed
+    // });
   }
 }

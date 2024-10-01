@@ -23,7 +23,7 @@ export class CouponServiceService {
       return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     }
   getReciever(){
-    return this.httpService.get<Coupon[]>("http://localhost:8080/coupon",{params:this.params}).pipe(
+    return this.httpService.get<Coupon[]>("http://localhost:8181/coupon",{params:this.params}).pipe(
       map((response: Coupon[]) => {
         return response.map(item => ({ couponCode: item.couponCode, fedexId: item.fedexId, status: item.status, couponDate: item.couponDate}));
       })
@@ -31,12 +31,12 @@ export class CouponServiceService {
   }
 
   postCoupon(coupon:Coupon){
-    return this.httpService.post("http://localhost:8080/coupon",coupon, { responseType: 'text' });
+    return this.httpService.post("http://localhost:8181/coupon",coupon, { responseType: 'text' });
   }
 
   getCouponById(coupon:Coupon)
   {
-    return this.httpService.get<Coupon>("http://localhost:8080/couponId",{params:new HttpParams().set('couponCode',coupon.couponCode)});
+    return this.httpService.get<Coupon>("http://localhost:8181/couponId",{params:new HttpParams().set('couponCode',coupon.couponCode)});
   }
 
 }

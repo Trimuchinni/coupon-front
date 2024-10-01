@@ -6,13 +6,14 @@ import { RecieverComponent } from './reciever/reciever.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomepageComponent },
-  { path: 'donate', component: DonorComponent },
-  { path: 'receive', component: RecieverComponent }
+  { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomepageComponent},
+  { path: 'donate', component: DonorComponent},
+  { path: 'receive', component: RecieverComponent}
 ];
 
 @NgModule({

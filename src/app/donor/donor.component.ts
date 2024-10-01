@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CouponServiceService } from '../coupon-service.service';
 import { Coupon } from '../DTO/Coupon';
 import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../authentication-service.service';
 
 @Component({
   selector: 'app-donor',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DonorComponent implements OnInit {
 
-  constructor(private couponServiceService: CouponServiceService,private route: ActivatedRoute) { }
+  constructor(private couponServiceService: CouponServiceService,private route: ActivatedRoute,private auth:AuthenticationService) { }
   couponCode: string = '';
   couponDate: string = '';
   couponId: string = '';
@@ -23,6 +24,13 @@ export class DonorComponent implements OnInit {
       this.couponId = params['couponId'];
       // Use this.couponId as needed
     });
+    if(this.couponId != ''){
+      this.auth.setAuthenticatedUser(true);
+    }
+    else
+    {
+      this.auth.setAuthenticatedUser(false);
+    }
   }
   formatDate(event: Event) {
     const selectedDate = new Date((event.target as HTMLInputElement).value);

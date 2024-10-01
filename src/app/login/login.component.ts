@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+interface GoogleUser {
+  getId(): string;
+  getName(): string;
+  getEmail(): string;
+  getImageUrl(): string;
+  getBasicProfile(): {
+    getId: () => string;
+    getName: () => string;
+    getEmail: () => string;
+    getImageUrl: () => string;
+  };
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +23,9 @@ export class LoginComponent implements OnInit {
 
   email:string='';
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // Expose the method to the global scope
+    (window as any).onGoogleSignIn = this.onGoogleSignIn.bind(this);
   }
 
     validateEmail() {
@@ -41,6 +54,22 @@ export class LoginComponent implements OnInit {
         console.log('Email is not valid');
       }
     }
+    onGoogleSignInk(googleUser: any) {
+      console.log('Google user:');
+    }
 
+    onGoogleSignIn(googleUser: any) {
+      console.log('Google user:');
+      const profile = googleUser.getBasicProfile();
+      const user = {
+        id: profile.getId(),
+        name: profile.getName(),
+        email: profile.getEmail(),
+        imageUrl: profile.getImageUrl()
+      };
+      console.log('User:', user);
 
+      localStorage.setItem('user', JSON.stringify(user)); // Store user details in local storage
+      // Redirect or perform further actions
+    }
 }
